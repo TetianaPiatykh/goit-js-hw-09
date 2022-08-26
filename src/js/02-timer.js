@@ -53,7 +53,7 @@ function timerStart() {
     // input.disable = true;
 };
 function timerStop() {
-    if (deltaTime <= 0) {
+    if (deltaTime <= 1000) {
         startBtn.disabled = true;
         clearInterval(intervalId);
     };
