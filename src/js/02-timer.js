@@ -14,7 +14,7 @@ let intervalId = null;
 let deltaTime;
 
 startBtn.addEventListener('click', timerStart);
-startBtn.disable = false;
+startBtn.disabled = false;
 
 const options = {
   enableTime: true,
