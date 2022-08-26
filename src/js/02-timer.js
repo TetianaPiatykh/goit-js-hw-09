@@ -4,7 +4,7 @@ import Notiflix from 'notiflix';
 
 
 const input = document.querySelector('#datetime-picker');
-const startBtn = document.querySelector('[data-start]');
+const startBtn = document.querySelector('button[data-start]');
 const dataDays = document.querySelector('[data-days]');
 const dataHours = document.querySelector('[data-hours]');
 const dataMinutes = document.querySelector('[data-minutes]');
@@ -26,11 +26,11 @@ const options = {
         if (selectedDates[0] <= Date.now()) {
             Notiflix.Notify.warning('Please choose a date in the future');
             
-            startBtn.disable = true;
+            startBtn.disabled = true;
             // alert("Please choose a date in the future");
-            timerStop()
+            return;
         }
-        startBtn.disable = false;
+        startBtn.disabled = false;
   },
 };
 flatpickr(input, options);
@@ -49,11 +49,12 @@ function timerStart() {
         dataSeconds.textContent = `${seconds}`;
         timerStop();
     }, 1000);
-    startBtn.disable = true;
-    input.disable = true;
+    
+    // input.disable = true;
 };
 function timerStop() {
     if (deltaTime <= 0) {
+        startBtn.disabled = true;
         clearInterval(intervalId);
     };
 }
